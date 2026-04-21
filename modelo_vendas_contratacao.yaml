@@ -32,7 +32,9 @@ tables:
       - name: Loja
         expr: NUM_DND
         description: "Identificador da loja onde a operacao foi realizada"
-        synonyms: ["Loja","Ponto de Atendimento","Local da venda"]
+        synonyms: 
+          - "Loja"
+          - "Ponto de Atendimento"
 
     measures:
       - name: faturamento_total
