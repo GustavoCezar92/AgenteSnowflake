@@ -1,0 +1,42 @@
+name: modelo_vendas_contratacao
+description: "Modelo semântico para análise de contratações, vendas e performance regional."
+tables:
+  - name: CONTRATACOES
+    base_table:
+      database: TEST_AGENT_DB
+      schema: RAW_DATA
+      table: CONTRATACOES
+    description: "Tabela contendo o histórico de digitação de contratos e vendas."
+
+    dimensions:
+      - name: data_digitacao
+        expr: DTA_PRU
+        description: "Data em que a contratação foi digitada."
+        synonyms: ["data do contrato", "dia da venda"]
+      - name: tipo_contrato
+        expr: TIPO
+        description: "Indica se é um Cliente Novo ou uma Renovação."
+      - name: situacao
+        expr: DES_STU
+        description: "Situação da contratação: Efetivada, Pendente ou Desconsiderada."s
+      - name: canal
+        expr: IDT_OGM_PRU
+        description: "Canal de origem da contratação (Aplicativo, Plataforma ou AA)."
+      - name: regional
+        expr: REGIONAL
+        description: "Região geográfica da unidade (MG, Sul ou Nordeste)."
+
+    measures:
+      - name: faturamento_total
+        expr: VLR_VDA
+        agg_func: SUM
+        description: "Soma total dos valores de venda."
+        synonyms: ["receita", "valor total"]
+      - name: ticket_medio
+        expr: VLR_VDA
+        agg_func: AVG
+        description: "Média do valor das vendas."
+      - name: volume_contratos
+        expr: "*"
+        agg_func: COUNT
+        description: "Quantidade total de registros de contratação."
