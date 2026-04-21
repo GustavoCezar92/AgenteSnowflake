@@ -29,6 +29,10 @@ tables:
         expr: REGIONAL
         description: "Região geográfica da unidade (MG, Sul ou Nordeste)."
         synonyms: ["Gerência Regional","Regional"]
+      - name: Loja
+        expr: NUM_DND
+        description: "Identificador da loja onde a operacao foi realizada"
+        synonyms: ["Loja","Ponto de Atendimento","Local da venda"]
 
     measures:
       - name: faturamento_total
