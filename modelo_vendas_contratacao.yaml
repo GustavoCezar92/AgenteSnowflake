@@ -12,26 +12,30 @@ tables:
       - name: data_digitacao
         expr: DTA_PRU
         description: "Data em que a contratação foi digitada."
-        synonyms: ["data do contrato", "dia da venda"]
+        synonyms: ["data do contrato", "dia da venda","Data de produção","dia de produção"]
       - name: tipo_contrato
         expr: TIPO
         description: "Indica se é um Cliente Novo ou uma Renovação."
+        synonyms: ["Tipo da operação","Tipo do Contrato"]
       - name: situacao
         expr: DES_STU
-        description: "Situação da contratação: Efetivada, Pendente ou Desconsiderada."s
+        description: "Situação da contratação: Efetivada, Pendente ou Desconsiderada."
+        synonyms: ["Situacao da Operação"]
       - name: canal
         expr: IDT_OGM_PRU
         description: "Canal de origem da contratação (Aplicativo, Plataforma ou AA)."
+        synonyms: ["Origem da producao","Origem da Venda","Canal de Produção","Canal de Venda"]
       - name: regional
         expr: REGIONAL
         description: "Região geográfica da unidade (MG, Sul ou Nordeste)."
+        synonyms: ["Gerência Regional","Regional"]
 
     measures:
       - name: faturamento_total
         expr: VLR_VDA
         agg_func: SUM
         description: "Soma total dos valores de venda."
-        synonyms: ["receita", "valor total"]
+        synonyms: ["receita", "valor total","Valor de Produção"]
       - name: ticket_medio
         expr: VLR_VDA
         agg_func: AVG
@@ -40,3 +44,4 @@ tables:
         expr: "*"
         agg_func: COUNT
         description: "Quantidade total de registros de contratação."
+        synonyms: ["Quantidade de Operacoes","Operacoes"]
